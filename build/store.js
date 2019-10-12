@@ -7,36 +7,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { observable, computed } from "../node_modules/mobx/lib/mobx.es6.js";
 var Store = /** @class */ (function () {
     function Store(initialState) {
-        this.initalState = {};
-        this.numClicks = 0;
-        this.chris = "chris";
-        this.initalState = initialState;
-        for (var key in this.initalState) {
-            if (this.initalState.hasOwnProperty(key)) {
-                console.log(key + " -> " + this.initalState[key]);
+        this.state = observable.map();
+        for (var key in initialState) {
+            if (initialState.hasOwnProperty(key)) {
+                this.state.set(key, initialState[key]);
             }
         }
     }
-    Store.prototype.oddOrEven = function () {
-        return this.numClicks % 2 === 0 ? 'even' : 'odd';
+    Store.prototype.isEven = function () {
+        return this.state.get("numClicks") % 2 === 0 ? 'even' : 'odd';
     };
     Store.prototype.update = function (property, value) {
-        this[property] = value;
+        return this.state.set(property, value);
+    };
+    Store.prototype.get = function (property, callback) {
+        if (callback) {
+            return callback(this.state.get(property));
+        }
+        return this.state.get(property);
     };
     __decorate([
-        observable
-    ], Store.prototype, "numClicks");
-    __decorate([
-        observable
-    ], Store.prototype, "chris");
-    __decorate([
         computed
-    ], Store.prototype, "oddOrEven");
+    ], Store.prototype, "isEven");
     __decorate([
         computed
     ], Store.prototype, "update");
+    __decorate([
+        computed
+    ], Store.prototype, "get");
     return Store;
 }());
-var store = new Store({ "test": "test" });
+var store = new Store({ name: "Alternative", numClicks: 0 });
 export { store };
 //# sourceMappingURL=store.js.map

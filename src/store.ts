@@ -1,31 +1,38 @@
-import { observable, computed } from "../node_modules/mobx/lib/mobx.es6.js";
+import { observable, computed, extendObservable } from "../node_modules/mobx/lib/mobx.es6.js";
 
 class Store {
-    private initalState = {};
+
+    private state;
 
     public constructor(initialState : object) {
-        this.initalState = initialState;
 
-        for (var key in this.initalState) {
-            if (this.initalState.hasOwnProperty(key)) {
-                console.log(key + " -> " + this.initalState[key]);
+        this.state = observable.map();
+
+        for (var key in initialState) {
+            if (initialState.hasOwnProperty(key)) {
+                this.state.set(key, initialState[key]);
             }
         }
     }
 
-    @observable numClicks = 0;
-    @observable chris = "chris";
-
-    @computed public oddOrEven() {
-      return this.numClicks % 2 === 0 ? 'even' : 'odd';
+    @computed public isEven() {
+      return this.state.get("numClicks") % 2 === 0 ? 'even' : 'odd';
     }
 
     @computed public update(property : string, value: any) {
-        this[property] = value;
+        return this.state.set(property, value);
+    }
+
+    @computed public get(property : string, callback : Function) {
+        if (callback) {
+            return callback(this.state.get(property));
+        }
+
+        return this.state.get(property);
     }
   }
   
-  const store = new Store({ "test" : "test" });
+  const store = new Store({ name : "Alternative", numClicks: 0 });
   
   export {
       store
