@@ -14,9 +14,6 @@ var Store = /** @class */ (function () {
             }
         }
     }
-    Store.prototype.isEven = function () {
-        return this.state.get("numClicks") % 2 === 0 ? 'even' : 'odd';
-    };
     Store.prototype.update = function (property, value) {
         return this.state.set(property, value);
     };
@@ -26,9 +23,6 @@ var Store = /** @class */ (function () {
         }
         return this.state.get(property);
     };
-    __decorate([
-        computed
-    ], Store.prototype, "isEven");
     __decorate([
         computed
     ], Store.prototype, "update");

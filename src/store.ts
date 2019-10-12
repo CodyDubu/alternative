@@ -15,10 +15,6 @@ class Store {
         }
     }
 
-    @computed public isEven() {
-      return this.state.get("numClicks") % 2 === 0 ? 'even' : 'odd';
-    }
-
     @computed public update(property : string, value: any) {
         return this.state.set(property, value);
     }

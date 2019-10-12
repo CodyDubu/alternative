@@ -4,7 +4,7 @@ import { html, render } from "../node_modules/lit-html/lit-html.js";
 const events = () => {
     spy((event) => {
         if (event.type === "action") {
-            console.log(`${event.name} with args: ${event.arguments}`);
+            // console.log(`${event.name} with args: ${event.arguments}`);
         }
     })
 }
