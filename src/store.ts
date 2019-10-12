@@ -1,4 +1,4 @@
-import { observable, computed, extendObservable } from "../node_modules/mobx/lib/mobx.es6.js";
+import { observable, computed } from "../node_modules/mobx/lib/mobx.es6.js";
 
 class Store {
 
