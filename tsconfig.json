@@ -3,6 +3,9 @@
         "module": "ES2015",
         "watch": true,
         "noUnusedParameters": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "lib": ["es6", "dom"],
+        "outDir": "./build",
+        "experimentalDecorators": true
     }
 }
