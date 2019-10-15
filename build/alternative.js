@@ -9,8 +9,10 @@ import { html } from "../node_modules/lit-html/lit-html.js";
 import { render } from "../node_modules/lit-html/lit-html.js";
 import { initialState } from "../build/initialState.js";
 var Alternative = /** @class */ (function () {
+    // TODO dynamically iterate over props to assign values passed in.
     function Alternative(initialState) {
         this.components = [];
+        this.html = html;
         this.state = observable.map();
         for (var key in initialState) {
             if (initialState.hasOwnProperty(key)) {
@@ -26,9 +28,6 @@ var Alternative = /** @class */ (function () {
     };
     Alternative.prototype.getComponents = function () {
         return this.components;
-    };
-    Alternative.prototype.Html = function () {
-        return html;
     };
     Alternative.prototype.update = function (property, value) {
         this.state.set(property, value);
@@ -50,4 +49,4 @@ var Alternative = /** @class */ (function () {
 }());
 var alternative = new Alternative(initialState);
 export { alternative };
-//# sourceMappingURL=store.js.map
+//# sourceMappingURL=alternative.js.map

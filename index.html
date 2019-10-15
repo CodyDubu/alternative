@@ -2,8 +2,74 @@
     <head>
         <title>Alternative</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/main.css" />
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/">Alternative</a>
+            </div>
+        </nav>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Tired of React & Angular?</h1>
+                <p class="lead">An easier JavaScript library for building user interfaces with state management</p>
+            </div>
+        </div>
+        <div class="container main-body">
+            <h3>Dynamic Behavior</h3>
+            <hr>
+            <p>The counter below is dynamically updated every second with a shared state across multiple components.</p>
+            <div id="counter"><img src="./assets/img/loader.gif" width="100" /></div>
+        </div>
+        <div class="divider"></div>
+        <div class="container main-body">
+            <h3>Click Events</h3>
+            <hr>
+            <p>Real time DOM manipulations without a virtual DOM.</p>
+            <div id="button"><img src="./assets/img/loader.gif" width="100" /></div>
+        </div>
+        <div class="divider"></div>
+        <div class="container main-body">
+            <h3>Text Input</h3>
+            <hr>
+            <p>Smart DOM updates.</p>
+            <div id="input"><img src="./assets/img/loader.gif" width="100" /></div>
+        </div>
+        <footer class="page-footer font-small blue pt-4">
+            <div class="container text-center text-md-left">
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Alternative JS</h5>
+                    <p>DOM & State management without JSX, Redux, Babel or Webpack.</p>    
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Docs</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="./getting_started">Getting Started</a>
+                        </li>
+                        <li>
+                        <a href="https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw">Video Tutorials</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Get Help</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                        <a href="https://github.com/chawk/alternative/issues">Report Issue</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="footer-copyright text-center py-3">© 2019 Copyright |
+            <a href="https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw">Noob Media LLC</a>
+            </div>
+        </footer>
         <script type="module" src="./build/index.js"></script>
     </body>
 </html>

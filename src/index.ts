@@ -1,40 +1,14 @@
-import { action } from "../node_modules/mobx/lib/mobx.es6.js";
-import { html, render } from "../node_modules/lit-html/lit-html.js";
-import events from "../build/events.js";
-import { store } from "../build/store.js";
+import { alternative } from "../build/alternative.js";
+import CounterComponent from "../build/components/counter-component.js";
+import ButtonComponent from "../build/components/button-component.js";
+import InputComponent from "../build/components/input-component.js";
 
+alternative.registerComponent({ component: ButtonComponent, values: "name", id: "#button"});
+alternative.registerComponent({ component: CounterComponent, values: "numClicks", id: "#counter" });
+alternative.registerComponent({ component: InputComponent, values: "numClicks", id: "#input" });
 
-// register event system
-events();
+setInterval(() => {
+    let num = alternative.get("numClicks");
+    alternative.update("numClicks", num += 1);
+}, 1000);
 
-const component = (store) => {
-    let name = store.get("name");
-
-    const test = () => {
-        if (name === "Alternative") {
-            store.update("name", "Chris");
-        } else {
-            store.update("name", "Alternative");
-        }
-    }
-
-    const isEven = () => {
-        return store.get("numClicks") % 2 === 0 ? 'even' : 'odd';
-    }
-    
-    return html`
-        <div class="container">
-            <h1>Hello ${store.get("name")}</h1>
-            <hr>
-            <button class="btn btn-primary" @click="${test}">Change the name</button>
-            <hr>
-            <h2>The state number is <span style="color: red">${isEven()}</span> -> ${store.get("numClicks")}</h2>
-        </div>
-    `
-}
-
-setInterval(action(function tick() {
-    let num = store.get("numClicks");
-    store.update("numClicks", num += 1);
-    render(component(store), document.body);
-}), 1000);
